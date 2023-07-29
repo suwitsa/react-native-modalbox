@@ -239,6 +239,12 @@ export default class ModalBox extends React.PureComponent {
 
     // Backdrop fadeIn
     if (this.props.backdrop) this.animateBackdropOpen();
+    const onOpenedProps = {
+      isOpen: this.state.isOpen,
+      isAnimateClose: this.state.isAnimateClose,
+      isAnimateOpen: this.state.isAnimateOpen,
+      isInitialized: this.state.isInitialized,
+    }
 
     this.setState(
       {
@@ -269,7 +275,7 @@ export default class ModalBox extends React.PureComponent {
               animOpen,
               positionDest
             });
-            if (this.props.onOpened) this.props.onOpened();
+            if (this.props.onOpened) this.props.onOpened(onOpenedProps);
           });
         });
       }
